@@ -1,0 +1,6 @@
+<?php
+
+return [
+    'SEMANTICS3_SECRET_KEY' => env('SEMANTICS3_SECRET_KEY'),
+    'SEMANTICS3_PUBLIC_KEY' => env('SEMANTICS3_PUBLIC_KEY')
+];
