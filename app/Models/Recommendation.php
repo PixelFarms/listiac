@@ -42,7 +42,12 @@ class Recommendation extends Model
 
     protected $guarded = [];
 
-
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = ['password'];
     /**
      * Get the index name for the model.
      *
@@ -89,12 +94,25 @@ class Recommendation extends Model
         //return $this->belongsTo('App\User', 'foreign_key', 'other_key');
     }
 
-    public function list()
+    public function catalog()
     {
-        //return $this->belongsTo('App\User');
+        return $this->hasOne('App\Models\Catalog');
         //return $this->belongsTo('App\User', 'foreign_key', 'other_key');
     }
 
+
+    protected $appends = [
+        'created_at_ago',
+        'updated_at_ago'
+    ];
+
+    public function getCreatedAtAgoAttribute() {
+        return $this->created_at->diffForHumans();
+    }
+
+    public function getUpdatedAtAgoAttribute() {
+        return $this->updated_at->diffForHumans();
+    }
 
     public function getSlugOptions() : SlugOptions
     {

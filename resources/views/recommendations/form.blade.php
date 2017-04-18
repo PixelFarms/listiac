@@ -40,6 +40,17 @@
     </div>
 </div>
 
+
+<div class="form-group {{ $errors->has('catalog_id') ? 'has-error' : ''}}">
+    <label for="catalog_id" class="col-md-2 control-label">Catalog Id</label>
+    <div class="col-md-10">
+{{ Form::select('id', $catalogs, null, ['class' => 'form-control']) }}
+
+        {!! $errors->first('catalog_id', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
+
 <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
     <label for="status" class="col-md-2 control-label">Status</label>
     <div class="col-md-10">

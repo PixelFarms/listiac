@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Controller;
 use App\Models\Catalog;
+use App\Models\Recommendation ;
+
+use Illuminate\Support\Facades\Auth;
 
 class CatalogsController extends Controller
 {
@@ -18,7 +21,7 @@ class CatalogsController extends Controller
      */
     public function index()
     {
-        $catalogs = Catalog::paginate(25);
+        $catalogs = Catalog::with('user')->paginate(25);
 
         return view('catalogs.index', compact('catalogs'));
     }
@@ -45,6 +48,7 @@ class CatalogsController extends Controller
         $this->affirm($request);
         $data = $request->all();
         $this->uploadFile('image', $data);
+        $data['user_id'] = (!Auth::guest()) ? Auth::id() : null ;
         Catalog::create($data);
 
         Session::flash('success_message', 'Catalog was added!');
@@ -62,7 +66,7 @@ class CatalogsController extends Controller
     public function show($id)
     {
         //$catalog = Catalog::findOrFail($id);
-        $catalog = Catalog::where('slug', '=', $slug)->first();
+        $catalog = Catalog::where('slug', '=', $id)->first();
         return view('catalogs.show', compact('catalog'));
     }
 
@@ -76,7 +80,6 @@ class CatalogsController extends Controller
     public function edit($id)
     {
         $catalog = Catalog::findOrFail($id);
-
         return view('catalogs.edit', compact('catalog'));
     }
 
@@ -93,6 +96,7 @@ class CatalogsController extends Controller
         $this->affirm($request);
         $catalog = Catalog::findOrFail($id);
         $data = $request->all();
+        //$data['user_id'] = (!Auth::guest()) ? Auth::id() : null ;
         $this->uploadFile('image', $data);
         $catalog->update($data);
 
@@ -130,10 +134,8 @@ class CatalogsController extends Controller
             'title' => 'max:255',
             'description' => 'max:65535',
             'image' => 'max:1000|mimes:jpg,png,gif',
-            'slug' => 'max:255',
-            'meta_keywords' => 'max:65535',
             'status' => 'max:9',
-            'recurring' => 'max:13',
+            /*'recurring' => 'max:13',
             'longitude' => 'max:25',
             'latitude' => 'max:25',
             'address1' => 'max:125',
@@ -141,7 +143,7 @@ class CatalogsController extends Controller
             'city' => 'max:125',
             'state' => 'max:125',
             'country' => 'max:225',
-            'zipcode' => 'max:25',
+            'zipcode' => 'max:25',*/
             'catalog_type' => 'max:9',
 
         ]);

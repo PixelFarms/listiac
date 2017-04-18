@@ -68,10 +68,9 @@
                             <td>{{ $catalog->catalog_type }}</td>
 
                             <td>
-                                <a href="{{ route('catalogs.catalog.show', $catalog->slug ) }}" class="btn btn-success btn-xs" title="View Catalog">
+                                <a href="{{ route('catalogs.catalog.show', $catalog->id ) }}" class="btn btn-success btn-xs" title="View Catalog">
                                     <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
                                 </a>
-                            @if (Auth::check() && Auth::id() === $catalog->user->id)
                                 <a href="{{ route('catalogs.catalog.edit', $catalog->id ) }}" class="btn btn-primary btn-xs" title="Edit Catalog">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
@@ -89,7 +88,6 @@
                                         ])
                                     !!}
                                 {!! Form::close() !!}
-                              @endif
                             </td>
                         </tr>
                     @endforeach

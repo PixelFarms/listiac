@@ -101,37 +101,40 @@ Route::group(
     'prefix' => 'catalogs',
 ], function () {
 
+  Route::get('/show/{slug}','CatalogsController@show')
+        ->name('catalogs.catalog.show');
+       //->where('id', '[0-9]+');
+
     Route::get('/', 'CatalogsController@index')
          ->name('catalogs.catalog.index');
 
    Route::get('/mine', 'CatalogsController@mine')
-         ->name('catalogs.catalog.mine')->middleware('auth');;
+         ->name('catalogs.catalog.mine')->middleware('auth');
 
-   Route::get('/{slug}','CatalogsController@show')
-         ->name('catalogs.catalog.show');
+
 
 
     Route::get('/create','CatalogsController@create')
-         ->name('catalogs.catalog.create');
-
+         ->name('catalogs.catalog.create')->middleware('auth');
+/*
     Route::get('/show/{list}','CatalogsController@show')
          ->name('catalogs.catalog.show')
          ->where('id', '[0-9]+');
-
+*/
     Route::get('/{list}/edit','CatalogsController@edit')
          ->name('catalogs.catalog.edit')
-         ->where('id', '[0-9]+');
+         ->where('id', '[0-9]+')->middleware('auth');
 
     Route::post('/', 'CatalogsController@store')
-         ->name('lists.list.store');
+         ->name('catalogs.catalog.store')->middleware('auth');
 
     Route::put('catalog/{catalog}', 'CatalogsController@update')
          ->name('catalogs.catalog.update')
-         ->where('id', '[0-9]+');
+         ->where('id', '[0-9]+')->middleware('auth');
 
     Route::delete('/catalog/{catalog}','CatalogsController@destroy')
          ->name('catalogs.catalog.destroy')
-         ->where('id', '[0-9]+');
+         ->where('id', '[0-9]+')->middleware('auth');
 
 });
 

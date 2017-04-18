@@ -11,6 +11,7 @@ use Spatie\Sluggable\SlugOptions;
 use Illuminate\Support\Facades\Route;
 use Laravel\Scout\Searchable;
 
+use Illuminate\Support\Facades\Auth;
 
 
 class Catalog extends Model

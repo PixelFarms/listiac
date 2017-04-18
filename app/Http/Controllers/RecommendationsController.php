@@ -8,9 +8,12 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Controller;
 use App\Models\Recommendation;
 use App\Models\Department;
+use App\Models\Catalog;
+
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
+
 use Subbe\Semantics3\Semantics3;
+use Illuminate\Support\Facades\Auth;
 
 class RecommendationsController extends Controller
 {
@@ -46,8 +49,13 @@ class RecommendationsController extends Controller
      */
     public function create()
     {
+
+      //$email = DB::table('users')->where('name', 'John')->value('email');
+
         $departments = Department::pluck('name', 'id');
-        return view('recommendations.create', compact('departments'));
+        $catalogs = Catalog::pluck('title', 'id');
+
+        return view('recommendations.create', compact('departments','catalogs'));
     }
 
     /**

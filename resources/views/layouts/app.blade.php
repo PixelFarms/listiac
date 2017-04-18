@@ -58,7 +58,32 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
+
+
+
+
                                 <ul class="dropdown-menu" role="menu">
+
+
+
+
+                                  <li>
+                                    <a href="{{ route('recommendations.recommendation.mine') }}" >
+                                      My Recommendations
+                                  </a>
+</li>
+  <li>
+                                  <a href="{{ route('catalogs.catalog.mine') }}" >
+                                      My Catalogs
+                                  </a>
+                                  </li>
+  <li>
+                                  <a href="{{ route('logout') }}" >
+                                      My Teams
+                                  </a>
+</li>
+
+
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

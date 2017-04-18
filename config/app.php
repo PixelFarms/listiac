@@ -177,7 +177,8 @@ return [
         CrestApps\CodeGenerator\CodeGeneratorServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Spatie\Backup\BackupServiceProvider::class,
+        /*Spatie\Backup\BackupServiceProvider::class,*/
+        AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
 
         /*
          * Application Service Providers...
