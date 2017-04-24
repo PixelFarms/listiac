@@ -179,7 +179,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         /*Spatie\Backup\BackupServiceProvider::class,*/
         AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
-
+        Dawson\AmazonECS\AmazonECSServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -240,6 +240,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Amazon' => Dawson\AmazonECS\AmazonECSFacade::class,
     ],
 
 ];

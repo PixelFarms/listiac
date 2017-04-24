@@ -41,7 +41,13 @@ Route::get('user/{id}', function($id) {
     return 'User '.$id;
 });
 */
+Route::get('amazon', function() {
+  $results = Amazon::search('Home Alone')->json();
+  //dd($results);
+  $product = Amazon::lookup('B004VLKY8M')->json();
+  dd($product);
 
+});
 
 Route::get('UPC/{code}', 'RecommendationsController@productLookup');
     //dd($upc);
