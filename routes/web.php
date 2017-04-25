@@ -46,7 +46,6 @@ Route::get('amazon', function() {
   //dd($results);
   $product = Amazon::lookup('B004VLKY8M')->json();
   dd($product);
-
 });
 
 Route::get('UPC/{code}', 'RecommendationsController@productLookup');
@@ -56,6 +55,29 @@ Route::get('UPC/{code}', 'RecommendationsController@productLookup');
 Route::get('/search', function () {
     return view('search.search');
 });
+
+
+
+
+
+// redirect the user to "/login"
+// and stores the url being accessed on session
+Route::filter('auth', function() {
+    if (Auth::guest()) {
+        return Redirect::guest('login');
+    }
+});
+//On login action:
+// redirect the user back to the intended page
+// or defaultpage if there isn't one
+/*
+if (Auth::attempt(['email' => $email, 'password' => $password])) {
+    return Redirect::intended('defaultpage');
+}
+*/
+
+
+
 
 
 Route::group(
