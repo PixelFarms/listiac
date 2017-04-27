@@ -62,11 +62,14 @@ Route::get('/search', function () {
 
 // redirect the user to "/login"
 // and stores the url being accessed on session
+/*
 Route::filter('auth', function() {
     if (Auth::guest()) {
         return Redirect::guest('login');
     }
 });
+*/
+
 //On login action:
 // redirect the user back to the intended page
 // or defaultpage if there isn't one
