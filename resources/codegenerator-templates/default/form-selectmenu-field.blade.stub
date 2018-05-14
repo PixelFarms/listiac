@@ -1,8 +1,8 @@
-        <select class="form-control" id="{{fieldName}}" name="{{fieldName}}" {{fieldMultiple}}{{requiredField}}>
-        	    {{placeHolder}}
-        	@foreach ({{fieldItems}} as $value => $title)
-			    <option value="{{ $value }}"{{selectedValue}}>
-			    	{{ $title }}
+        <select class="form-control[% css_class %]" id="[% field_name %]" name="[% field_name %]"[% field_multiple %][% required_field %]>
+        	    [% placeholder %]
+        	@foreach ([% field_items %] as $key => [% field_item %])
+			    <option value="{{ $key }}"[% selected_value %]>
+			    	{{ [% field_item %] }}
 			    </option>
 			@endforeach
         </select>

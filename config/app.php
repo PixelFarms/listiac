@@ -180,6 +180,9 @@ return [
         /*Spatie\Backup\BackupServiceProvider::class,*/
         AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
         Dawson\AmazonECS\AmazonECSServiceProvider::class,
+        Way\Generators\GeneratorsServiceProvider::class,
+Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
